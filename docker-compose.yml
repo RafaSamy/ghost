@@ -124,3 +124,7 @@ services:
 networks:
   network-ghost:
     driver: bridge
+# Définition des volumes pour stocker les données persistantes
+volumes:
+  nextcloud_aio_mastercontainer:
+    name: nextcloud_aio_mastercontainer  # Volume requis pour Nextcloud AIO
