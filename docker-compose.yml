@@ -120,35 +120,7 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data
 
-  # 🔥 PROMETHEUS 🔥
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    restart: unless-stopped
-    networks:
-      - network-ghost
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
-
-  # 📊 GRAFANA 📊
-  grafana:
-    image: grafana/grafana:latest
-    container_name: grafana
-    restart: unless-stopped
-    networks:
-      - network-ghost
-    environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=grafanapassword
-    volumes:
-      - ./grafana:/var/lib/grafana
-    ports:
-      - "3000:3000"
-
 # Réseau Docker
 networks:
   network-ghost:
     driver: bridge
-
